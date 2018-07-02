@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Book\functions-unittesting-sample\DotNet\FunctionTestHelper\FunctionTestHelper.csproj" />
+    <ProjectReference Include="..\FunctionTestHelper\FunctionTestHelper.csproj" />
     <ProjectReference Include="..\RecognitionOrderValidator3\RecognitionOrderValidator.csproj" />
     <ProjectReference Include="..\ServerlessImageManagement\ServerlessImageManagement.csproj" />
   </ItemGroup>
