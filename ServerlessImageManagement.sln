@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessImageManagement", "ServerlessImageManagement\ServerlessImageManagement.csproj", "{D46A9199-2920-4961-9686-82FC804AD0E1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessFaceAggregator", "ServerlessFaceAggregator\ServerlessFaceAggregator.csproj", "{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecognitionOrderValidator", "RecognitionOrderValidator3\RecognitionOrderValidator.csproj", "{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessTests", "ServerlessTests\ServerlessTests.csproj", "{51CA2873-DB65-4310-B034-DADBD73DAA97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionTestHelper", "..\functions-unittesting-sample\DotNet\FunctionTestHelper\FunctionTestHelper.csproj", "{C04F1269-CA05-444F-8D31-66401C4B6083}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{D46A9199-2920-4961-9686-82FC804AD0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D46A9199-2920-4961-9686-82FC804AD0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D46A9199-2920-4961-9686-82FC804AD0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04F1269-CA05-444F-8D31-66401C4B6083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04F1269-CA05-444F-8D31-66401C4B6083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04F1269-CA05-444F-8D31-66401C4B6083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04F1269-CA05-444F-8D31-66401C4B6083}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

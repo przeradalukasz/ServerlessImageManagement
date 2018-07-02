@@ -12,7 +12,7 @@ namespace ServerlessImageManagement
 {
     public static class Utils
     {
-        public static readonly CloudBlobClient BlobClient;
+        public static CloudBlobClient BlobClient;
 
         static Utils()
         {
