@@ -48,7 +48,12 @@ namespace ServerlessImageManagement
 
         public static string GetContainerNameFromFullPath(Uri blobClientBaseUri, string fullPath)
         {
-            var relativePath = fullPath.Substring(blobClientBaseUri.AbsoluteUri.Length + 1);
+            var offset = 1;
+            if(blobClientBaseUri.AbsoluteUri[blobClientBaseUri.AbsoluteUri.Length-1] == '/')
+            {
+                offset = 0;
+            }
+            var relativePath = fullPath.Substring(blobClientBaseUri.AbsoluteUri.Length + offset);
             return relativePath.Substring(0, relativePath.IndexOf('/'));
         }
 

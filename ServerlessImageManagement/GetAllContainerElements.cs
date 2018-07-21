@@ -15,22 +15,19 @@ namespace ServerlessImageManagement
     {
         [FunctionName("GetAllContainerElements")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequestMessage req,
-            IBinder binder, TraceWriter log)
+             IBinder binder, TraceWriter log)
         {
             var userId = Utils.WhoAmI();
             var attribute = new BlobAttribute($"{userId}", FileAccess.Read);
             attribute.Connection = "ImageStorageAccount";
 
-            using (var userStorage = binder.BindAsync<CloudBlobContainer>(attribute))
-            {
-                await userStorage.Result.CreateIfNotExistsAsync();
-                var blobs = await userStorage.Result.ListBlobsSegmentedAsync(String.Empty, true, BlobListingDetails.All, Int32.MaxValue, null, new BlobRequestOptions(), new OperationContext());
-                var paths = blobs.Results.Where(x => !x.Uri.AbsoluteUri.Contains("_thumbnail."))
-                    .Select(e => e.Uri.AbsoluteUri);
-                var root = paths.GetHierarchy(userId);
-                return req.CreateResponse(HttpStatusCode.OK, root);
-            };
-
+            var userStorage = await binder.BindAsync<CloudBlobContainer>(attribute);
+            await userStorage.CreateIfNotExistsAsync();
+            var blobs = await userStorage.ListBlobsSegmentedAsync(String.Empty, true, BlobListingDetails.All, Int32.MaxValue, null, new BlobRequestOptions(), new OperationContext());
+            var paths = blobs.Results.Where(x => !x.Uri.AbsoluteUri.Contains("_thumbnail."))
+                .Select(e => e.Uri.AbsoluteUri);
+            var root = paths.GetHierarchy(userId);
+            return req.CreateResponse(HttpStatusCode.OK, root);
         }
     }
 }
