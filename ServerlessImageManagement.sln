@@ -7,12 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessImageManagement",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessFaceAggregator", "ServerlessFaceAggregator\ServerlessFaceAggregator.csproj", "{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecognitionOrderValidator", "RecognitionOrderValidator3\RecognitionOrderValidator.csproj", "{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessTests", "ServerlessTests\ServerlessTests.csproj", "{51CA2873-DB65-4310-B034-DADBD73DAA97}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionTestHelper", "FunctionTestHelper\FunctionTestHelper.csproj", "{3F3784CC-05C9-4FEC-8FE8-A946017E60B1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,18 +21,6 @@ Global
 		{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9270DEB-73C1-428C-AD0F-7C8981EB3E85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A34B8EF1-4FF2-4622-99D5-CE41A9476B17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51CA2873-DB65-4310-B034-DADBD73DAA97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F3784CC-05C9-4FEC-8FE8-A946017E60B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F3784CC-05C9-4FEC-8FE8-A946017E60B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F3784CC-05C9-4FEC-8FE8-A946017E60B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F3784CC-05C9-4FEC-8FE8-A946017E60B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
