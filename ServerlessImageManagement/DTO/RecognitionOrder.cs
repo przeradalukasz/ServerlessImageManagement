@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ServerlessImageManagement.DTO
 {
     public class RecognitionOrder
     {
-        public string PhotosSource { get; set; }
+        public string SourcePath { get; set; }
         public IEnumerable<string> PatternFaces { get; set; }
         public string DestinationFolder { get; set; }
         public string RecognitionName { get; set; }

@@ -1,18 +1,21 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Newtonsoft.Json;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Threading;
 
 namespace ServerlessImageManagement
 {
     public static class Utils
     {
-        public static CloudBlobClient BlobClient;
+        public static readonly CloudBlobClient BlobClient;
+        public static readonly string userName = "dummyuser";
 
         static Utils()
         {
@@ -27,7 +30,8 @@ namespace ServerlessImageManagement
 
         public static string GetThumbnailPath(string imagePath)
         {
-            var newFileName = Path.GetFileNameWithoutExtension(imagePath) + "_thumbnail.jpg";
+            var extenstion = Path.GetExtension(imagePath);
+            var newFileName = Path.GetFileNameWithoutExtension(imagePath) + "_thumbnail" + extenstion;
             return imagePath.Replace(Path.GetFileName(imagePath), newFileName);
         }
 
@@ -62,6 +66,17 @@ namespace ServerlessImageManagement
                 return source;
             string result = source.Remove(place, find.Length).Insert(place, replace);
             return result;
+        }
+
+        public static Dictionary<string, string> GetQueryStrings(this HttpRequestMessage request)
+        {
+            return request.GetQueryNameValuePairs()
+                .ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.OrdinalIgnoreCase);
+        }
+
+        public static string WhoAmI()
+        {
+            return "dummyuser4";
         }
     }
 }

@@ -1,5 +1,3 @@
-
-using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
@@ -17,12 +15,12 @@ namespace ServerlessImageManagement
     public static class GetImageThumbnail
     {
         [FunctionName("GetImageThumbnail")]
-        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequest req,
-             TraceWriter log)
+        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequestMessage req,
+            [Queue("thumbnails", Connection = "ImageStorageAccount")] ICollector<string> thumbnailsQueue, TraceWriter log)
         {
             Stream photoStream;
-            var imagePath = req.Query["path"];
-            var thumbnailPath = Utils.GetThumbnailPath(imagePath);
+            var imagePath = req.GetQueryStrings()["path"];
+            string thumbnailPath = Utils.GetThumbnailPath(imagePath);
             try
             {
                 var photoBlob = await Utils.BlobClient.GetBlobReferenceFromServerAsync(new Uri(thumbnailPath, UriKind.Absolute));
@@ -32,6 +30,7 @@ namespace ServerlessImageManagement
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                thumbnailsQueue.Add(thumbnailPath);
                 try
                 {
                     var photoBlob = await Utils.BlobClient.GetBlobReferenceFromServerAsync(new Uri(imagePath, UriKind.Absolute));

@@ -1,26 +1,20 @@
-
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
-using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Newtonsoft.Json;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ServerlessImageManagement
 {
     public static class RenameElement
     {
         [FunctionName("RenameElement")]
-        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "patch", Route = null)]HttpRequest req, TraceWriter log)
+        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "patch", Route = null)]HttpRequestMessage req, TraceWriter log)
         {
-            string requestBody = new StreamReader(req.Body).ReadToEnd();
+            string requestBody = await req.Content.ReadAsStringAsync();
             var fullPath = Utils.GetParamValueFromHttpBody(requestBody, "path");
 
             var containerName = Utils.GetContainerNameFromFullPath(Utils.BlobClient.BaseUri, fullPath);
@@ -48,14 +42,14 @@ namespace ServerlessImageManagement
                         await newBlobThumbnail.StartCopyAsync(oldBlobThumbnail);
                         await oldBlob.DeleteIfExistsAsync();
                         await oldBlobThumbnail.DeleteIfExistsAsync();
-                        return new OkObjectResult("Name successfully changed");
+                        return req.CreateResponse(HttpStatusCode.OK, "Name successfully changed");
 
                     }
-                    return new BadRequestErrorMessageResult($"Could not find blob with name: {Path.GetFileName(fullPath)}");
+                    return req.CreateErrorResponse(HttpStatusCode.BadRequest, $"Could not find blob with name: {Path.GetFileName(fullPath)}");
                 }
-                return new BadRequestErrorMessageResult($"Blob with the name {newFileName} already exists");
+                return req.CreateErrorResponse(HttpStatusCode.BadRequest, $"Blob with the name {newFileName} already exists");
             }
-            return new BadRequestErrorMessageResult("Could not find the container for this user");
+            return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Could not find the container for this user");
         }
     }
 }

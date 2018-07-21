@@ -37,9 +37,14 @@ namespace ServerlessImageManagement
             foreach (var path in paths)
             {
                 var splitBetweenBaseAndDirectory = path.IndexOf(userId, StringComparison.Ordinal) + userId.Length;
-                var parts = path.Remove(0, splitBetweenBaseAndDirectory + 1).Split('/');
-                var baseAbsolutePath = path.Substring(0, splitBetweenBaseAndDirectory);
-                root.BuildTree(parts, baseAbsolutePath, baseRelativePath);
+                var pathWithoutUser = path.Remove(0, splitBetweenBaseAndDirectory).TrimStart('/');
+                if (!string.IsNullOrWhiteSpace(pathWithoutUser))
+                {
+                    var parts = pathWithoutUser.Split('/');
+                    var baseAbsolutePath = path.Substring(0, splitBetweenBaseAndDirectory);
+                    root.BuildTree(parts, baseAbsolutePath, baseRelativePath);
+                }
+
             }
             return root;
         }
