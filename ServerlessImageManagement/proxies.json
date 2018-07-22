@@ -1,17 +1,53 @@
 ﻿{
     "$schema": "http://json.schemastore.org/proxies",
     "proxies": {
-      "Proxy for index": {
-        "matchCondition": {
-          "route": "/"
-        },
-        "backendUri": "https://serverlessazurebook.blob.core.windows.net/frontend/index.html"
-      },
-        "Proxy for paths": {
+        "Proxy for index": {
             "matchCondition": {
-                "route": "/{*path}"
+                "route": "/"
             },
-            "backendUri": "https://serverlessazurebook.blob.core.windows.net/frontend/{path}"
+            "backendUri": "https://serverlessazurebook.blob.core.windows.net/frontend/index.html"
+        },
+      "Proxy for paths": {
+        "matchCondition": {
+          "route": "/{*path}"
+        },
+        "backendUri": "https://serverlessazurebook.blob.core.windows.net/frontend/{path}"
+      },
+        "Proxy GetAllContainerElements": {
+            "matchCondition": {
+                "route": "/api/GetAllContainerElements"
+            },
+            "backendUri": "https://faceaggregator.azurewebsites.net/api/GetAllContainerElements"
+        },
+        "Proxy DeleteElement": {
+            "matchCondition": {
+                "route": "/api/DeleteElement"
+            },
+            "backendUri": "https://faceaggregator.azurewebsites.net/api/DeleteElement"
+        },
+        "Proxy GetImage": {
+            "matchCondition": {
+                "route": "/api/GetImage"
+            },
+            "backendUri": "https://faceaggregator.azurewebsites.net/api/GetImage"
+        },
+        "Proxy GetImageThumbnail": {
+            "matchCondition": {
+                "route": "/api/GetImageThumbnail"
+            },
+            "backendUri": "https://faceaggregator.azurewebsites.net/api/GetImageThumbnail"
+        },
+        "Proxy RenameElement": {
+            "matchCondition": {
+                "route": "/api/RenameElement"
+            },
+            "backendUri": "https://faceaggregator.azurewebsites.net/api/RenameElement"
+        },
+        "Proxy UploadImage": {
+            "matchCondition": {
+                "route": "/api/UploadImage/{path}"
+            },
+            "backendUri": "https://faceaggregator.azurewebsites.net/api/UploadImage/{path}"
         }
     }
 }
