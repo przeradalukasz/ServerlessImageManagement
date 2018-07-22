@@ -60,7 +60,7 @@ namespace ServerlessImageManagement
         public static string GetDirectoryFromFullPath(string fullPath, string containerName)
         {
             var directoryFilePath = fullPath.Substring(fullPath.IndexOf(containerName, StringComparison.Ordinal) + containerName.Length + 1);
-            return directoryFilePath.Substring(0, directoryFilePath.LastIndexOf('/'));
+            return directoryFilePath.LastIndexOf('/') != -1 ? directoryFilePath.Substring(0, directoryFilePath.LastIndexOf('/')) + "/" : "";
         }
 
         private static string ReplaceLastOccurrence(this string source, string find, string replace)

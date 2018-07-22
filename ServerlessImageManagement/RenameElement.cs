@@ -20,8 +20,8 @@ namespace ServerlessImageManagement
             var containerName = Utils.GetContainerNameFromFullPath(Utils.BlobClient.BaseUri, fullPath);
             var container = Utils.BlobClient.GetContainerReference(containerName);
 
-            var oldFileName = Utils.GetDirectoryFromFullPath(fullPath, containerName) + '/' + Path.GetFileName(fullPath);
-            var newFileName = Utils.GetDirectoryFromFullPath(fullPath, containerName) + '/' + Utils.GetParamValueFromHttpBody(requestBody, "newFileName");
+            var oldFileName = Utils.GetDirectoryFromFullPath(fullPath, containerName) + Path.GetFileName(fullPath);
+            var newFileName = Utils.GetDirectoryFromFullPath(fullPath, containerName) + Utils.GetParamValueFromHttpBody(requestBody, "newFileName");
 
             var oldFileThumbnailName = Utils.GetThumbnailPath(oldFileName);
             var newFileThumbnailName = Utils.GetThumbnailPath(newFileName);
