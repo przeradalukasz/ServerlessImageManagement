@@ -1,0 +1,17 @@
+﻿{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+      "Proxy for index": {
+        "matchCondition": {
+          "route": "/"
+        },
+        "backendUri": "https://serverlessazurebook.blob.core.windows.net/frontend/index.html"
+      },
+        "Proxy for paths": {
+            "matchCondition": {
+                "route": "/{*path}"
+            },
+            "backendUri": "https://serverlessazurebook.blob.core.windows.net/frontend/{path}"
+        }
+    }
+}
